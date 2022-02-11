@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
+
+$emerald:#23CE6B;
+$lightSteelBlue:#B8C5D6;
+$aliceBlue: #EDF5FC;
+$charlestonGreen: #272D2D;
+$heliotropeGray: #A39BA8;
+
+$interFont: 'Inter', sans-serif;
+
+:export {
+    emerald: $emerald;
+    lightSteelBlue: $lightSteelBlue;
+    aliceBlue: $aliceBlue;
+    charlestonGreen: $charlestonGreen;
+    heliotropeGray: $heliotropeGray;
+
+    interFont: $interFont;
+}
