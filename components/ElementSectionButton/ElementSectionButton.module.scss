@@ -1,0 +1,16 @@
+@import "../../styles/variables.module.scss";
+
+.elementSectionButton {
+  font-size: 20px;
+  color: $aliceBlue;
+  display: flex;
+  flex-direction: column;
+  border: none !important;
+  margin-bottom: 5px;
+  &:hover {
+    background-color: darken($color: $charlestonGreen, $amount: 10) !important;
+  }
+  span {
+    font-size: 10px;
+  }
+}

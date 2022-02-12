@@ -1,0 +1,15 @@
+@import "../../styles/variables.module.scss";
+
+.elementsSelector {
+  max-width: 400px;
+  width: 100%;
+  height: 100%;
+  background-color: $charlestonGreen;
+  display: flex;
+
+  .categories {
+    width: 120px;
+    background-color: darken($color: $charlestonGreen, $amount: 5);
+    padding: 20px;
+  }
+}
