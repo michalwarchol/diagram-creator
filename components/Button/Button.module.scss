@@ -1,0 +1,26 @@
+@import "../../styles/variables.module.scss";
+
+@mixin button {
+    padding: 20px;
+    border: 2px solid $emerald;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fill{
+    @include button;
+    background-color: $emerald;
+    &:hover{
+        background-color: darken($color: $emerald, $amount: 5);
+    }
+}
+
+.outline {
+    @include button;
+    &:hover{
+        background-color: darken($color: $aliceBlue, $amount: 5);
+    }
+}
