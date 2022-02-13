@@ -1,0 +1,11 @@
+@import "../../styles/variables.module.scss";
+
+.navbar {
+    background-color: $lightSteelBlue;
+    width: 100%;
+    padding: 10px;
+
+    h1{
+        margin: 0;
+    }
+}
