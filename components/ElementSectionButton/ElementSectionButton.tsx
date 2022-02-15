@@ -2,13 +2,14 @@ import React from "react";
 import styles from "./ElementSectionButton.module.scss";
 import { IconType } from "react-icons/lib";
 import Button from "../Button/Button";
-import { Actions, Selector } from "../../redux/types";
+import { Actions, Selector, State } from "../../redux/types";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
 interface Props {
   text: string;
   Icon: IconType;
+  selectorValue: Selector;
   selector: Selector;
   changeSelector(selector: Selector): void;
 }
@@ -16,14 +17,20 @@ interface Props {
 const ElementSectionButton: React.FC<Props> = ({
   text,
   Icon,
+  selectorValue,
   selector,
   changeSelector,
 }) => {
+  let className = styles.elementSectionButton;
+  if (selectorValue == selector) {
+    className += " " + styles.selected;
+  }
+
   return (
     <Button
       variant="outline"
-      className={styles.elementSectionButton}
-      onClick={() => changeSelector(selector)}
+      className={className}
+      onClick={() => changeSelector(selectorValue)}
     >
       <Icon />
       <span>{text}</span>
@@ -31,8 +38,14 @@ const ElementSectionButton: React.FC<Props> = ({
   );
 };
 
+const mapStateToProps = (state: State) => {
+  return {
+    selector: state.selector,
+  };
+};
+
 const mapDispatchToProps = (dispatch: Dispatch<Actions>) => ({
   changeSelector: (selector: Selector) =>
     dispatch({ type: "changeSelector", selector }),
 });
-export default connect(null, mapDispatchToProps)(ElementSectionButton);
+export default connect(mapStateToProps, mapDispatchToProps)(ElementSectionButton);

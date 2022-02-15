@@ -13,22 +13,22 @@ const ElementsSelector: React.FC = () => {
         <ElementSectionButton
           text="Shapes"
           Icon={FaShapes}
-          selector={Selector.SHAPES}
+          selectorValue={Selector.SHAPES}
         />
         <ElementSectionButton
           text="Text"
           Icon={BiText}
-          selector={Selector.TEXT}
+          selectorValue={Selector.TEXT}
         />
         <ElementSectionButton
           text="Elements"
           Icon={FaDatabase}
-          selector={Selector.ELEMENTS}
+          selectorValue={Selector.ELEMENTS}
         />
         <ElementSectionButton
           text="Arrows"
           Icon={BsArrowUpRight}
-          selector={Selector.ARROWS}
+          selectorValue={Selector.ARROWS}
         />
       </div>
     </div>

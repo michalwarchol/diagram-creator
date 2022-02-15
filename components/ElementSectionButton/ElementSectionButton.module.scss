@@ -14,3 +14,7 @@
     font-size: 10px;
   }
 }
+
+.selected {
+  background-color: darken($color: $charlestonGreen, $amount: 10) !important;
+}
