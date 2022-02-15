@@ -7,8 +7,10 @@ const initialState: State = {
 const reducer = (state: State = initialState, action: Actions) => {
     switch(action.type){
         case "changeSelector":
-            state.selector=action.selector;
-            return state;
+            return {
+                ...state,
+                selector: action.selector
+            };
         default:
             return state;
     }
