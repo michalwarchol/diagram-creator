@@ -1,7 +1,8 @@
 import {Selector, State, Actions} from "./types";
 
 const initialState: State = {
-    selector: Selector.SHAPES
+    selector: Selector.SHAPES,
+    activeElements: [],
 }
 
 const reducer = (state: State = initialState, action: Actions) => {
@@ -11,6 +12,11 @@ const reducer = (state: State = initialState, action: Actions) => {
                 ...state,
                 selector: action.selector
             };
+        case "changeActiveElements":
+            return {
+                ...state,
+                activeElements: [...action.activeElements]
+            }
         default:
             return state;
     }
