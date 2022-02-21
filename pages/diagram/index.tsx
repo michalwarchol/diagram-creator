@@ -6,6 +6,7 @@ import styles from "./Diagram.module.scss";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import ElementsSelector from "../../components/ElementsSelector/ElementsSelector";
+import Canvas from "../../components/Canvas/Canvas";
 
 const Diagram: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const Diagram: React.FC = () => {
       <Navbar />
       <div className={styles.panel}>
         <ElementsSelector />
+        <Canvas />
       </div>
       <Footer />
     </div>
