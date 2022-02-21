@@ -1,0 +1,18 @@
+@import "../../styles/variables.module.scss";
+
+.element {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    position: absolute;
+    box-sizing: border-box;
+    user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.active {
+    border: 3px solid $fluorescentBlue;
+}
