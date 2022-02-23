@@ -6,11 +6,11 @@ import Element from "../Element/Element";
 import styles from "./Canvas.module.scss";
 
 interface Props {
-  activeElements: HTMLElement[];
+  elements: number[];
   changeActiveElements(activeElements: HTMLElement[]): void;
 }
 
-const Canvas: React.FC<Props> = ({ changeActiveElements }) => {
+const Canvas: React.FC<Props> = ({ elements, changeActiveElements }) => {
   const canvasRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState<number>(1000);
   const [height, setHeight] = useState<number>(800);
@@ -29,10 +29,9 @@ const Canvas: React.FC<Props> = ({ changeActiveElements }) => {
         style={{ width, height }}
         onClick={onClick}
       >
-        <Element id={1} key={1} />
-        <Element id={2} key={2} />
-        <Element id={3} key={3} />
-        <Element id={4} key={4} />
+        {elements.map((elem, i) => (
+          <Element id={elem} key={i} />
+        ))}
       </div>
     </div>
   );
@@ -40,14 +39,14 @@ const Canvas: React.FC<Props> = ({ changeActiveElements }) => {
 
 const mapStateToProps = (state: State) => {
   return {
-    activeElements: state.activeElements,
+    elements: state.elements.map((elem) => elem.id),
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<Actions>) => {
   return {
     changeActiveElements: (activeElements: HTMLElement[]) =>
-      dispatch({ type: "changeActiveElements", activeElements })
+      dispatch({ type: "changeActiveElements", activeElements }),
   };
 };
 
