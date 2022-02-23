@@ -5,6 +5,7 @@ import { BiText } from "react-icons/bi";
 import { BsArrowUpRight } from "react-icons/bs";
 import { Selector } from "../../redux/types";
 import ElementSectionButton from "../ElementSectionButton/ElementSectionButton";
+import ElementsGroup from "../ElementsGroup/ElementsGroup";
 
 const ElementsSelector: React.FC = () => {
   return (
@@ -31,6 +32,7 @@ const ElementsSelector: React.FC = () => {
           selectorValue={Selector.ARROWS}
         />
       </div>
+      <ElementsGroup />
     </div>
   );
 };

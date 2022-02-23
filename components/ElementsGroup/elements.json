@@ -1,0 +1,61 @@
+[
+  {
+    "name": "shapes",
+    "elements": [
+        {
+            "name": "rectangle"
+        }, 
+        {
+            "name": "circle"
+        },
+        {
+            "name": "triangle"
+        },
+        {
+            "name": "hexagon"
+        }
+    ]
+  },
+  {
+      "name": "text",
+      "elements": [
+          {
+              "name": "heading"
+          },
+          {
+              "name": "paragraph"
+          }
+      ]
+  },
+  {
+      "name": "elements",
+      "elements": [
+          {
+              "name": "database"
+          }, 
+          {
+              "name": "Javascript"
+          },
+          {
+              "name": "MongoDB"
+          },
+          {
+              "name": "React"
+          }
+      ]
+  },
+  {
+    "name": "arrows",
+    "elements": [
+        {
+            "name": "line"
+        },
+        {
+            "name": "one sided arrow"
+        },
+        {
+            "name": "double sided arrow"
+        }
+    ]
+  }
+]

@@ -1,0 +1,27 @@
+@import "../../styles/variables.module.scss";
+
+.elementInstance {
+    padding: 10px 0;
+    background-color: darken($color: $charlestonGreen, $amount: 5);
+    color: $aliceBlue;
+    border-radius: 8px;
+    width: 100px;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    &:hover{
+        background-color: lighten($color: $charlestonGreen, $amount: 5);
+    }
+
+    .element{
+        padding: 10px 20px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    p {
+        text-align: center;
+        margin: 0;
+    }
+}

@@ -1,0 +1,10 @@
+.elementsGroup {
+    margin-top: 20px;
+
+    .elementsGroupInner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
