@@ -2,28 +2,30 @@ import React, { MouseEvent, useEffect, useRef, useState } from "react";
 import styles from "./Element.module.scss";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { Actions, State } from "../../redux/types";
+import { Actions, ElementProperties, State } from "../../redux/types";
+import ElementUnit from "../ElementUnit/ElementUnit";
 
 interface Props {
   id: number;
-  activeElements: HTMLElement[];
-  changeActiveElements(activeElements: HTMLElement[]): void;
 }
 
-const Element: React.FC<Props> = ({
-  id,
+interface ReduxProps {
+  elementProps: ElementProperties;
+  activeElements: HTMLElement[];
+  changeActiveElements(activeElements: HTMLElement[]): void;
+  moveElement(id: number, x: number, y: number): void;
+}
+
+const Element: React.FC<Props & ReduxProps> = ({
+  elementProps,
   activeElements,
   changeActiveElements,
+  moveElement
 }) => {
-  const init = useRef(true);
   const elementRef = useRef<HTMLDivElement>(null);
 
   //if element is captured by a mouse
   const [mouseTracked, setMouseTracked] = useState<boolean>(false);
-
-  //position of the element
-  const [x, setX] = useState(100);
-  const [y, setY] = useState(100);
 
   //position from where element has been moved while moving
   const [startX, setStartX] = useState(100);
@@ -48,8 +50,8 @@ const Element: React.FC<Props> = ({
 
   const onMouseUp = () => {
     setMouseTracked(false);
-    setStartX(x);
-    setStartY(y);
+    setStartX(elementProps.x);
+    setStartY(elementProps.y);
   };
 
   const onMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -57,20 +59,7 @@ const Element: React.FC<Props> = ({
       //calculate new position of element
       let newX = startX + (e.pageX - mousex);
       let newY = startY + (e.pageY - mousey);
-
-      //coordinates outside canvas
-      if (newX < 0) setX(0);
-      if (newY < 0) setY(0);
-      if (newX > 1000) setX(1000 - elementRef.current!.clientWidth);
-      if (newY > 1000) setY(800 - elementRef.current!.clientHeight);
-
-      //coordinates in canvas
-      if (newX >= 0 && newX <= 1000 - elementRef.current!.clientWidth) {
-        setX(newX);
-      }
-      if (newY >= 0 && newY <= 800 - elementRef.current!.clientHeight) {
-        setY(newY);
-      }
+      moveElement(elementProps.id, newX, newY);
     }
   };
 
@@ -79,8 +68,8 @@ const Element: React.FC<Props> = ({
     if (elementRef.current) {
       if (!activeElements.includes(elementRef.current)) {
         setMouseTracked(false);
-        setStartX(x);
-        setStartY(y);
+        setStartX(elementProps.x);
+        setStartY(elementProps.y);
       }
     }
   }, [activeElements]);
@@ -99,17 +88,21 @@ const Element: React.FC<Props> = ({
       onMouseUp={onMouseUp}
       onMouseMove={onMouseMove}
       style={{
-        top: y,
-        left: x,
+        top: elementProps.y,
+        left: elementProps.x,
         zIndex: mouseTracked ? 99 : undefined,
+        height: elementProps.height,
       }}
-    ></div>
+    >
+      <ElementUnit C={elementProps.C} />
+    </div>
   );
 };
 
-const mapStateToProps = (state: State) => {
+const mapStateToProps = (state: State, ownProps: Props) => {
   return {
     activeElements: state.activeElements,
+    elementProps: state.elements.find((e) => e.id == ownProps.id)!,
   };
 };
 
@@ -117,6 +110,8 @@ const mapDispatchToProps = (dispatch: Dispatch<Actions>) => {
   return {
     changeActiveElements: (activeElements: HTMLElement[]) =>
       dispatch({ type: "changeActiveElements", activeElements }),
+    moveElement: (id: number, x: number, y: number) =>
+      dispatch({ type: "moveElement", id, x, y }),
   };
 };
 

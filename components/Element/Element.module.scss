@@ -1,9 +1,7 @@
 @import "../../styles/variables.module.scss";
 
 .element {
-    width: 100px;
-    height: 100px;
-    border: 2px solid black;
+    border: 3px solid transparent;
     position: absolute;
     box-sizing: border-box;
     user-select: none; /* supported by Chrome and Opera */
